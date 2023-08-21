@@ -6,6 +6,8 @@ I am undertaking this project to consolidate learning from the Tech Educators ME
 
 Specifically the project should ensure the Database data is re-rendered immediately following any change, and should contain a working filter function that filters current data. These should be achieved by storing all relevant state - and its associated functionality - in the common ancestor Rect component.
 
+A Trello board is being used for project management.
+
 ## About the Website
 
 The website is for a fictional company where people can lease out their outfits for special occasions and other people can hire them for a fee. The site has the facility for an agency administrator to update or delete database objects.
