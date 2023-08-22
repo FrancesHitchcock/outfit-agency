@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import "./reset.css";
 import "./App.css";
 
+import Admin from "./pages/Admin";
+
 function App() {
   const [allOutfits, setAllOutfits] = useState([]);
 
@@ -20,9 +22,30 @@ function App() {
     getAllOutfits();
   }, []);
 
+  async function handleDeleteOutfit(id) {
+    try {
+      const URL = `http://localhost:8080/outfits/${id}`;
+      await axios.delete(URL);
+      getAllOutfits();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleEditFormSubmit(event, id, outfit) {
+    event.preventDefault();
+    try {
+      const URL = `http://localhost:8080/outfits/${id}`;
+      await axios.put(URL, outfit);
+      getAllOutfits();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const allOutfitsMarkup = allOutfits.map((outfit) => {
     return (
-      <div key={outfit._id}>
+      <div className="outfit-card" key={outfit._id}>
         <h3>Outfit: {outfit.itemName}</h3>
       </div>
     );
@@ -41,14 +64,20 @@ function App() {
         </div>
         <div className="outfits-page main-container">
           <h2>This is the outfits page</h2>
-          {allOutfitsMarkup}
+          <div className="outfits-container">{allOutfitsMarkup}</div>
         </div>
         <div className="outfit-by-id-page main-container">
           <h2>This is the outfit by id page</h2>
         </div>
-        <div className="admin-page main-container">
+        <Admin
+          allOutfits={allOutfits}
+          handleDeleteOutfit={handleDeleteOutfit}
+          handleEditFormSubmit={handleEditFormSubmit}
+        />
+        {/* <div className="admin-page main-container">
           <h2>This is the admin page</h2>
-        </div>
+          <div className="admin-outfits-container">{adminOutfitsMarkup}</div>
+        </div> */}
       </main>
       <footer>
         <div className="footer-container">

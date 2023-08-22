@@ -1,3 +1,9 @@
+/* layout */
+
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
   color: #111;
@@ -25,17 +31,79 @@ header {
   border: 1px solid red;
 }
 
-header h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-
 footer {
   padding: 1em 0;
 }
 
 .footer-container {
   border: 1px solid red;
+}
+
+.main-container {
+  padding: 2em 0;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid red;
+}
+
+/* outfit cards */
+
+.outfits-container,
+.admin-outfits-container {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.outfit-card,
+.admin-card {
+  text-align: left;
+  padding: 1em 0;
+  border-bottom: 1px solid #ccc;
+  width: 275px;
+}
+
+.outfit-card:last-child,
+.admin-card:last-child {
+  border-bottom: none;
+}
+
+/* admin outfit cards */
+
+.edit-form-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 275px;
+  height: 350px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  background-color: rgba(200, 200, 200, 0.9);
+  padding: 1.5em 0.5em;
+  border-radius: 5px;
+  border: 1px solid red;
+  align-items: flex-end;
+}
+
+.edit-form {
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid red;
+  flex-grow: 1;
+}
+
+/* typography */
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
 footer h5 {
@@ -46,12 +114,22 @@ footer h5 {
 h2 {
   font-size: 2rem;
   font-weight: bold;
+  margin-bottom: 1em;
 }
 
-.main-container {
-  padding: 2em 0;
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
-  border: 1px solid red;
+.admin-outfit-h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+/* buttons and links */
+
+.admin-button {
+  margin-bottom: 1em;
+}
+
+.admin-form-close-btn {
+  width: 100px;
+  margin: 0 0 1em 0;
 }
