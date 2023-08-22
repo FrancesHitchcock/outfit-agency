@@ -67,7 +67,3 @@ app.delete("/outfits/:id", async (request, response) => {
 });
 
 app.listen(PORT, () => console.log(`app is listening on port: ${PORT}`));
-
-// mongoDB cluster password: DkkyAVlzJTOzDezP
-
-// connection string: mongodb+srv://franhhitchcock:<password>@outfitagencycluster.fgt2oo0.mongodb.net/
