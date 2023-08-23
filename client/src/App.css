@@ -47,7 +47,22 @@ footer {
   border: 1px solid red;
 }
 
+/* home page */
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: flex-start;
+  width: 300px;
+  margin: 2em auto;
+}
+
 /* outfit cards */
+
+.owner-filter-select {
+  margin: 2em 0 3em 0;
+}
 
 .outfits-container,
 .admin-outfits-container {
@@ -91,7 +106,6 @@ footer {
 }
 
 .edit-form {
-  /* height: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -123,6 +137,11 @@ h2 {
   margin-bottom: 0.5em;
 }
 
+.outfit-page-h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
 /* buttons and links */
 
 .admin-button {
@@ -132,4 +151,8 @@ h2 {
 .admin-form-close-btn {
   width: 100px;
   margin: 0 0 1em 0;
+}
+
+.user-submit-btn {
+  margin: 0 auto;
 }

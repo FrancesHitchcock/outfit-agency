@@ -19,7 +19,6 @@ export default function AdminOutfit({
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        // [name]: value,
         [name]: name === "colours" ? value.split(", ") : value,
       };
     });

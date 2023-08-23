@@ -3,15 +3,25 @@ import { useState, useEffect } from "react";
 import "./reset.css";
 import "./App.css";
 
+import Outfits from "./pages/Outfits";
 import Admin from "./pages/Admin";
+import Home from "./pages/Home";
 
 function App() {
   const [allOutfits, setAllOutfits] = useState([]);
+  const [filterTerm, setFilterTerm] = useState("");
+  // const [addFormData, setAddFormData] = useState({
+  //   itemName: "",
+  //   ownerName: "",
+  //   colours: [],
+  //   cost: 0,
+  //   description: "",
+  // });
 
   async function getAllOutfits() {
     try {
-      const API = "http://localhost:8080/outfits";
-      const resp = await axios.get(API);
+      const URL = "http://localhost:8080/outfits";
+      const resp = await axios.get(URL);
       setAllOutfits(resp.data);
     } catch (error) {
       console.log(error);
@@ -43,13 +53,33 @@ function App() {
     }
   }
 
-  const allOutfitsMarkup = allOutfits.map((outfit) => {
-    return (
-      <div className="outfit-card" key={outfit._id}>
-        <h3>Outfit: {outfit.itemName}</h3>
-      </div>
-    );
-  });
+  async function handleAddFormSubmit(e, outfit) {
+    e.preventDefault();
+    const URL = "http://localhost:8080/outfits";
+    await axios.post(URL, outfit);
+    getAllOutfits();
+    // setAddFormData({
+    //   itemName: "",
+    //   ownerName: "",
+    //   colours: [],
+    //   cost: 0,
+    //   description: "",
+    // });
+  }
+
+  function handleFilterChange(e) {
+    setFilterTerm(e.target.value);
+  }
+
+  // function handleChange(event) {
+  //   const { name, value } = event.target;
+  //   setAddFormData((prevFormData) => {
+  //     return {
+  //       ...prevFormData,
+  //       [name]: name === "colours" ? value.split(", ") : value,
+  //     };
+  //   });
+  // }
 
   return (
     <div className="App">
@@ -59,13 +89,12 @@ function App() {
         </div>
       </header>
       <main className="main">
-        <div className="home-page main-container">
-          <h2>This is the home page</h2>
-        </div>
-        <div className="outfits-page main-container">
-          <h2>This is the outfits page</h2>
-          <div className="outfits-container">{allOutfitsMarkup}</div>
-        </div>
+        <Home handleAddFormSubmit={handleAddFormSubmit} />
+        <Outfits
+          allOutfits={allOutfits}
+          filterTerm={filterTerm}
+          handleFilterChange={handleFilterChange}
+        />
         <div className="outfit-by-id-page main-container">
           <h2>This is the outfit by id page</h2>
         </div>
@@ -74,10 +103,6 @@ function App() {
           handleDeleteOutfit={handleDeleteOutfit}
           handleEditFormSubmit={handleEditFormSubmit}
         />
-        {/* <div className="admin-page main-container">
-          <h2>This is the admin page</h2>
-          <div className="admin-outfits-container">{adminOutfitsMarkup}</div>
-        </div> */}
       </main>
       <footer>
         <div className="footer-container">
