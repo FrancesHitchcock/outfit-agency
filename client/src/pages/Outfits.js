@@ -11,7 +11,24 @@ export default function Outfits({
     return (
       <div className="outfit-card" key={outfit._id}>
         <h3>Outfit: {outfit.itemName}</h3>
+        <h3>Owned by: {outfit.ownerName}</h3>
       </div>
+    );
+  });
+
+  const allOwners = [];
+
+  allOutfits.forEach((outfit) => {
+    if (!allOwners.includes(outfit.ownerName)) {
+      allOwners.push(outfit.ownerName);
+    }
+  });
+
+  const filterOptionsMarkup = allOwners.map((owner) => {
+    return (
+      <option key={owner} value={owner}>
+        {owner}
+      </option>
     );
   });
 
@@ -27,8 +44,9 @@ export default function Outfits({
         </h3>
         <select className="owner-filter-select" onChange={handleFilterChange}>
           <option value="">All</option>
-          <option value="Sally">Sally</option>
-          <option value="Harry">Harry</option>
+          {/* <option value="Sally">Sally</option>
+          <option value="Harry">Harry</option> */}
+          {filterOptionsMarkup}
         </select>
         <div className="outfits-container">{filteredOutfitsMarkup}</div>
       </div>
