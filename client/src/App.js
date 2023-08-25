@@ -1,9 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./reset.css";
 import "./App.css";
 
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Outfits from "./pages/Outfits";
+import OutfitById from "./pages/OutfitById";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 
@@ -12,7 +16,7 @@ import Home from "./pages/Home";
 
 function App() {
   const [allOutfits, setAllOutfits] = useState([]);
-  const [filterTerm, setFilterTerm] = useState("");
+  // const [filterTerm, setFilterTerm] = useState("");
 
   async function getAllOutfits() {
     try {
@@ -50,45 +54,57 @@ function App() {
   }
 
   async function handleAddFormSubmit(e, outfit) {
-    e.preventDefault();
-    const URL = "http://localhost:8080/outfits";
-    await axios.post(URL, outfit);
-    getAllOutfits();
+    try {
+      e.preventDefault();
+      const URL = "http://localhost:8080/outfits";
+      await axios.post(URL, outfit);
+      getAllOutfits();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  function handleFilterChange(e) {
-    setFilterTerm(e.target.value);
-  }
+  // function handleFilterChange(e) {
+  //   setFilterTerm(e.target.value);
+  // }
 
   return (
-    <div className="App">
-      <header>
-        <div className="header-container">
-          <h1>Outfit Agency</h1>
-        </div>
-      </header>
-      <main className="main">
-        <Home handleAddFormSubmit={handleAddFormSubmit} />
-        <Outfits
-          allOutfits={allOutfits}
-          filterTerm={filterTerm}
-          handleFilterChange={handleFilterChange}
-        />
-        <div className="outfit-by-id-page main-container">
-          <h2>This is the outfit by id page</h2>
-        </div>
-        <Admin
-          allOutfits={allOutfits}
-          handleDeleteOutfit={handleDeleteOutfit}
-          handleEditFormSubmit={handleEditFormSubmit}
-        />
-      </main>
-      <footer>
-        <div className="footer-container">
-          <h5>This is the footer</h5>
-        </div>
-      </footer>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home handleAddFormSubmit={handleAddFormSubmit} />}
+          />
+          <Route
+            path="/outfits"
+            element={
+              <Outfits
+                allOutfits={allOutfits}
+                // filterTerm={filterTerm}
+                // handleFilterChange={handleFilterChange}
+              />
+            }
+          />
+          <Route
+            path="/outfit/:id"
+            element={<OutfitById handleDeleteOutfit={handleDeleteOutfit} />}
+          />
+          <Route
+            path="/admin"
+            element={
+              <Admin
+                allOutfits={allOutfits}
+                handleDeleteOutfit={handleDeleteOutfit}
+                handleEditFormSubmit={handleEditFormSubmit}
+              />
+            }
+          />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
