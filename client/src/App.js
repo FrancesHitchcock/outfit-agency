@@ -16,7 +16,12 @@ import Home from "./pages/Home";
 
 function App() {
   const [allOutfits, setAllOutfits] = useState([]);
-  // const [filterTerm, setFilterTerm] = useState("");
+
+  const [filterTerm, setFilterTerm] = useState("");
+
+  function handleFilterChange(e) {
+    setFilterTerm(e.target.value);
+  }
 
   async function getAllOutfits() {
     try {
@@ -64,10 +69,6 @@ function App() {
     }
   }
 
-  // function handleFilterChange(e) {
-  //   setFilterTerm(e.target.value);
-  // }
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -82,11 +83,15 @@ function App() {
             element={
               <Outfits
                 allOutfits={allOutfits}
-                // filterTerm={filterTerm}
-                // handleFilterChange={handleFilterChange}
+                filterTerm={filterTerm}
+                handleFilterChange={handleFilterChange}
               />
             }
           />
+          {/* <Route
+            path="/outfit/:id"
+            element={<OutfitById handleDeleteOutfit={handleDeleteOutfit}/>}
+          /> */}
           <Route
             path="/outfit/:id"
             element={<OutfitById handleDeleteOutfit={handleDeleteOutfit} />}

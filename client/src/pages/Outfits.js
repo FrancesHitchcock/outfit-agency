@@ -3,14 +3,14 @@ import { useState } from "react";
 
 export default function Outfits({
   allOutfits,
-  // filterTerm,
-  // handleFilterChange,
+  filterTerm,
+  handleFilterChange,
 }) {
-  const [filterTerm, setFilterTerm] = useState("");
+  // const [filterTerm, setFilterTerm] = useState("");
 
-  function handleFilterChange(e) {
-    setFilterTerm(e.target.value);
-  }
+  // function handleFilterChange(e) {
+  //   setFilterTerm(e.target.value);
+  // }
 
   const filteredOutfits = filterTerm
     ? allOutfits.filter((outfit) => outfit.ownerName === filterTerm)
