@@ -9,7 +9,9 @@ export default function OutfitById({ handleDeleteOutfit }) {
   const paramsId = useParams().id;
 
   async function getTargetOutfit() {
-    const res = await axios.get(`http://localhost:8080/outfits/${paramsId}`);
+    const res = await axios.get(
+      `https://outfit-agency.onrender.com/outfits/${paramsId}`
+    );
     setTargetOutfit(res.data[0]);
     setOutfitVisible(true);
   }

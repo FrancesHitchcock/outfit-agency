@@ -26,7 +26,7 @@ function App() {
 
   async function getAllOutfits() {
     try {
-      const URL = "http://localhost:8080/outfits";
+      const URL = "https://outfit-agency.onrender.com/outfits";
       const resp = await axios.get(URL);
       if (resp.data.length > 0) {
         setAllOutfits(resp.data);
@@ -45,7 +45,7 @@ function App() {
 
   async function handleDeleteOutfit(id) {
     try {
-      const URL = `http://localhost:8080/outfits/${id}`;
+      const URL = `https://outfit-agency.onrender.com/outfits/${id}`;
       await axios.delete(URL);
       getAllOutfits();
     } catch (error) {
@@ -56,7 +56,7 @@ function App() {
   async function handleEditFormSubmit(event, id, outfit) {
     event.preventDefault();
     try {
-      const URL = `http://localhost:8080/outfits/${id}`;
+      const URL = `https://outfit-agency.onrender.com/outfits/${id}`;
       await axios.put(URL, outfit);
       getAllOutfits();
     } catch (error) {
@@ -67,7 +67,7 @@ function App() {
   async function handleAddFormSubmit(e, outfit) {
     try {
       e.preventDefault();
-      const URL = "http://localhost:8080/outfits";
+      const URL = "https://outfit-agency.onrender.com/outfits";
       await axios.post(URL, outfit);
       getAllOutfits();
     } catch (error) {

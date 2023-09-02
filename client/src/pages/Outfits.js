@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 export default function Outfits({
   allOutfits,
@@ -73,11 +72,3 @@ export default function Outfits({
     </main>
   );
 }
-
-// {outfitsExist ? (
-
-// ) : (
-//   <div>
-//     <h2>There are currently on outfits to hire.</h2>
-//   </div>
-// )}
