@@ -53,7 +53,7 @@ export default function OutfitById({ handleDeleteOutfit }) {
               Thank you for hiring the {targetOutfit.itemName} from{" "}
               {targetOutfit.ownerName}.
             </h3>
-            <Link to="/">
+            <Link to="/outfits">
               <button
                 className="back-button"
                 onClick={() => {

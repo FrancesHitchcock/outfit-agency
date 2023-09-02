@@ -4,6 +4,7 @@ export default function Admin({
   allOutfits,
   handleDeleteOutfit,
   handleEditFormSubmit,
+  outfitsExist,
 }) {
   const adminOutfitsMarkup = allOutfits.map((outfit) => {
     return (
@@ -19,8 +20,16 @@ export default function Admin({
   return (
     <main>
       <div className="admin-page main-container">
-        <h2>This is the admin page</h2>
-        <div className="admin-outfits-container">{adminOutfitsMarkup}</div>
+        {outfitsExist ? (
+          <>
+            <h2>Use this page to edit or delete items</h2>
+            <div className="admin-outfits-container">{adminOutfitsMarkup}</div>
+          </>
+        ) : (
+          <>
+            <h2>There are no outfits in the database.</h2>
+          </>
+        )}
       </div>
     </main>
   );

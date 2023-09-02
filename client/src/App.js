@@ -16,6 +16,7 @@ import Home from "./pages/Home";
 
 function App() {
   const [allOutfits, setAllOutfits] = useState([]);
+  const [outfitsExist, setOutfitsExist] = useState(false);
 
   const [filterTerm, setFilterTerm] = useState("");
 
@@ -27,7 +28,12 @@ function App() {
     try {
       const URL = "http://localhost:8080/outfits";
       const resp = await axios.get(URL);
-      setAllOutfits(resp.data);
+      if (resp.data.length > 0) {
+        setAllOutfits(resp.data);
+        setOutfitsExist(true);
+      } else {
+        setOutfitsExist(false);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -85,13 +91,10 @@ function App() {
                 allOutfits={allOutfits}
                 filterTerm={filterTerm}
                 handleFilterChange={handleFilterChange}
+                outfitsExist={outfitsExist}
               />
             }
           />
-          {/* <Route
-            path="/outfit/:id"
-            element={<OutfitById handleDeleteOutfit={handleDeleteOutfit}/>}
-          /> */}
           <Route
             path="/outfit/:id"
             element={<OutfitById handleDeleteOutfit={handleDeleteOutfit} />}
@@ -103,6 +106,7 @@ function App() {
                 allOutfits={allOutfits}
                 handleDeleteOutfit={handleDeleteOutfit}
                 handleEditFormSubmit={handleEditFormSubmit}
+                outfitsExist={outfitsExist}
               />
             }
           />
