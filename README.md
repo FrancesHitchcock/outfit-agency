@@ -23,3 +23,7 @@ There will be no fee or payment facility as part of the website, as the purpose 
 - As an outfit owner I want to submit outfit details by means of a form. I want my outfit to appear immediately in the database and front end.
 
 - As an outfit hirer I want to click on an outfit to learn more about it. I then want to click a button to reserve an outfit. I want the outfit to be removed from the database and front end immediately it has been reserved.
+
+## React Strategy
+
+For the first time I built the React components using a top-down strategy - i.e. I started with all the content, state and functionality in App.js. I then moved each section into its own component, imported it into App.js, passing the state and functions down as props. This was instead of building all the components first and then trying to work our where the functions should go. This was a very successful approach, and I will be employing it in the future.
