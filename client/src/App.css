@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* border: 1px solid red; */
 }
 
 main {
@@ -28,16 +27,8 @@ header {
   padding: 2em 0;
 }
 
-.header-container {
-  /* border: 1px solid red; */
-}
-
 footer {
   padding: 1em 0;
-}
-
-.footer-container {
-  /* border: 1px solid red; */
 }
 
 .main-container {
@@ -45,10 +36,14 @@ footer {
   width: 90%;
   max-width: 1000px;
   margin: 0 auto;
-  /* border: 1px solid red; */
 }
 
 /* home page */
+
+.home-p {
+  text-align: left;
+  margin-top: 1em;
+}
 
 .add-form {
   display: flex;
@@ -67,7 +62,6 @@ footer {
 
 .outfits-container,
 .admin-outfits-container {
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,7 +96,6 @@ footer {
   background-color: rgba(200, 200, 200, 0.9);
   padding: 1.5em 0.5em;
   border-radius: 5px;
-  /* border: 1px solid red; */
   align-items: flex-end;
 }
 
@@ -110,7 +103,6 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* border: 1px solid red; */
   flex-grow: 1;
 }
 
